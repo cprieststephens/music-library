@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "backend app",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "This codebase is a NodeJs server, created using [Express](https://expressjs.com/en/api.html). \n\nThe repo comes configured with [ESLint](https://eslint.org/) - a linting tool for Javascript.\n\nTo run the application:\n>> npm start"
+    }
+  ],
+  "isPrimary": true
+}

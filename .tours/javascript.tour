@@ -1,0 +1,39 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Javascript",
+  "steps": [
+    {
+      "file": "index.js",
+      "description": "We use [`dotenv`](https://www.npmjs.com/package/dotenv) to manage environment variables in the app. Create a `.env` file in the root of the repo, The `.env.example` already present in the repo shows the environment variables required to run the app.\n\nThis line in the code will read the `.env` file, and make all values defined in that file available via `process.env`. For example, if you set `PGUSER=hello` in your `.env` file, this will be accesible in your Javascript via:\n\n```js\nproces.env.PGUSER\n```",
+      "line": 1,
+      "title": "Env vars"
+    },
+    {
+      "file": "index.js",
+      "description": "`app` is our express server. We configure it in `app.js`",
+      "line": 2,
+      "title": "Express App"
+    },
+    {
+      "file": "index.js",
+      "description": "We run the app on the `PORT` defined in the `.env` file, otherwise 4000 if there isn't a port defined.",
+      "line": 6,
+      "title": "Start the server"
+    },
+    {
+      "file": "src/app.js",
+      "description": "create a new Express app. `app` allows us to create new routes, add middleware, and start the server.",
+      "line": 3
+    },
+    {
+      "file": "src/app.js",
+      "description": "Use the `express.json()` middleware. This allows us to read JSON request bodies in our routes and other middleware.",
+      "line": 5
+    },
+    {
+      "file": "src/app.js",
+      "description": "Create a new `get` handler, which sends a response of \"Hello world\"",
+      "line": 7
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "music-library",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prestart": "node scripts/create-database.js && npm run migrate",
+    "start": "nodemon index.js",
+    "lint": "eslint .",
+    "migrate": "node scripts/migrate.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.10.0",
+    "postgres-migrations": "5.3.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "eslint": "^8.36.0",
+    "nodemon": "^2.0.21"
+  }
+}

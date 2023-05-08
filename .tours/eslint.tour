@@ -1,0 +1,24 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "ESLint",
+  "steps": [
+    {
+      "file": ".eslintrc.json",
+      "description": "This is the config file for ESLint. We are able to define rules in here, and ESLint will check your code to ensure you are following them.\n\nTo run lint on your code:\n>> npm run lint",
+      "line": 1,
+      "title": "Overview"
+    },
+    {
+      "file": ".eslintrc.json",
+      "description": "We haven't added any specific rules ourselves in this file, just gone with the recommended rules ESLint provides for us.",
+      "line": 7,
+      "title": "Recommended rules"
+    },
+    {
+      "file": ".eslintrc.json",
+      "description": "Add any extra rules here.",
+      "line": 13,
+      "title": "Adding rules"
+    }
+  ]
+}
