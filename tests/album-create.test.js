@@ -30,7 +30,7 @@ describe("create album", () => {
         } = await db.query(`SELECT * FROM Albums WHERE artistId = ${artist.id}`);
         expect(albumData.name).to.equal("Innerspeaker");
         expect(albumData.year).to.equal(2010);
-        expect(albumData.artistId).to.equal(artist.id);
+        expect(albumData.artistid).to.equal(artist.id);
       });
     });
   });

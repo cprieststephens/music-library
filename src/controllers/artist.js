@@ -81,7 +81,7 @@ const deleteArtist = async (req, res) => {
 };
 
 const createAlbum = async (req, res) => {
-  const { artistId } = req.params.id;
+  const { artistId } = req.params;
   const { name, year } = req.body;
   
   try {
