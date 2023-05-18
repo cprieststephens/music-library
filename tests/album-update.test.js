@@ -14,7 +14,7 @@ describe("Update Album", () => {
     
      artist = artistRow.rows[0];
   
-    const  albumRow  = await db.query(
+    const albumRow = await db.query(
       "INSERT INTO Albums (name, year, artistId) VALUES($1, $2, $3) RETURNING *",
       ["Innerspeaker", "2010", artist.id]
     );

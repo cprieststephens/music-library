@@ -26,7 +26,7 @@ describe('Delete Artist', () => {
     it('returns a 404 if the artist does not exist', async () => {
       const { status, body } = await request(app).delete('/artists/999999999').send();
 
-      expect(status).to.equal(404)
+      expect(status).to.equal(404);
       expect(body.message).to.equal('artist 999999999 does not exist');
     });
   });
