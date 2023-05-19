@@ -1,10 +1,8 @@
-// scripts/migrate.js
 const { migrate } = require("postgres-migrations");
 const path = require("path");
 
 const { NODE_ENV } = process.env;
 
-// This code is repeated a few times in our scripts. Can you factor it out into a shared helper function?
 if (NODE_ENV != "production") {
   const args = process.argv.slice(2)[0];
 
@@ -13,7 +11,7 @@ if (NODE_ENV != "production") {
   require("dotenv").config({
     path: path.join(__dirname, envFile),
   });
-}
+};
 
 const { PGUSER, PGHOST, PGPASSWORD, PGDATABASE, PGPORT } = process.env;
 
@@ -43,4 +41,4 @@ try {
   migrateDB(config);
 } catch (err) {
   console.log(err);
-}
+};

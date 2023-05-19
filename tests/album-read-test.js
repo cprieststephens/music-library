@@ -73,5 +73,4 @@ describe("Read Albums", () => {
       expect(body.message).to.equal("album 999999999 does not exist");
     });
   });
-
 });
