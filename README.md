@@ -16,19 +16,19 @@ This app was created using the NPX script `@command-shift/create-backend-app`.
 ### Clone this repository
 
 - Create a fork of this repo.
-- Clone your copy of the repo.
+- Copy the fork's git address and clone to you machine using `git clone`.
 
 ### Install the project dependencies
 
-Use the command `npm install` to download the project's dependencies.
+Use `npm install` to download the project's dependencies.
 
 ## Run the test code
 
-Use the command `npm test` to run the integration tests.
+Use `npm test` to run the integration tests.
 
 ## Use Postman to interact with the database
 
-- Use the command `npm start` to start your server.
+- Use `npm start` to start your server.
 - Open Postman and enter http://localhost:3000.
 - See the table below for routes and methods for each operation.
 - When using routes that contain `:id`, you will need to replace this with the artist's or album's ID.
