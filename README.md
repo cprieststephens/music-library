@@ -8,23 +8,19 @@ This app was created using the NPX script `@command-shift/create-backend-app`.
 
 ### Set up the database
 
-- Install Docker
-- Pull and run a postgres image to create a container
-- Install pgAdmin
-- Add a new server for the database
+- Install Docker.
+- Pull and run a postgres image to create a container.
+- Install pgAdmin.
+- Add a new server.
 
 ### Clone this repository
 
 - Create a fork of this repo.
-- Clone your copy of the repo using the command: `git clone git@github.com:_your-github-username_/music-library`.
+- Clone your copy of the repo.
 
 ### Install the project dependencies
 
-Use the command `npm install` to download the project's dependencies:
-
-- `pg`
-- `express`
-- `postgres-migrations`
+Use the command `npm install` to download the project's dependencies.
 
 ## Run the test code
 
@@ -35,17 +31,18 @@ Use the command `npm test` to run the integration tests.
 - Use the command `npm start` to start your server.
 - Open Postman and enter http://localhost:3000.
 - See the table below for routes and methods for each operation.
-- When using routes that contain `:id`, you will need to replace this in your request with the ID number of the artist or album you are targeting.
+- When using routes that contain `:id`, you will need to replace this with the artist's or album's ID.
 - If you want to add an album to the database, you will need to add the artist first.
-- For POST and PUT requests, you will need to add information to the request body. Select `Body` and `raw`, then select JSON from the dropdown. Data in the request body should be written in JSON format.
+- For POST and PUT requests, you will need to add information to the request body. Select `Body` and `raw`, then select JSON from the dropdown.
 - POST and PUT requests for artists will need `name` and `genre` data e.g.
 
 ```
 {
   "name": "test",
-  "genre": "rock"
+  "genre": "test"
 }
 ```
+
 - POST and PUT requests for albums will need `name`, `year` and `artistId` data e.g.
 
 ```
