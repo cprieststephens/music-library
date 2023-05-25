@@ -9,15 +9,15 @@ describe('Read Albums', () => {
   beforeEach(async () => {
     const artistData = await Promise.all([
       db.query(
-        'INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *',
+        'INSERT INTO Artists (name, genre) VALUES($1, $2) RETURNING *',
         ['Lana Del Ray', 'pop']
       ),
       db.query(
-        'INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *',
+        'INSERT INTO Artists (name, genre) VALUES($1, $2) RETURNING *',
         ['Patrick Wolf', 'indie']
       ),
       db.query(
-        'INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *',
+        'INSERT INTO Artists (name, genre) VALUES($1, $2) RETURNING *',
         ['Lemon Jelly', 'electronic']
       ),
     ]);
@@ -55,7 +55,7 @@ describe('Read Albums', () => {
     });
   });
 
-  describe('GET /albums{id}', () => {
+  describe('GET /albums/{id}', () => {
     it('returns the album with the correct id', async () => {
       const { status, body } = await request(app)
         .get(`/albums/${albums[0].id}`)

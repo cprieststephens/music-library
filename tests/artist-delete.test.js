@@ -21,7 +21,6 @@ describe('Delete Artist', () => {
         .send();
 
       expect(status).to.equal(200);
-
       expect(body).to.deep.equal({
         id: artist.id,
         name: 'Tame Impala',

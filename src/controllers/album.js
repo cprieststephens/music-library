@@ -1,5 +1,22 @@
 const db = require('../db/index');
 
+const createAlbum = async (req, res) => {
+  const { artistId } = req.params;
+  const { name, year } = req.body;
+
+  try {
+    const {
+      rows: [album],
+    } = await db.query(
+      'INSERT INTO Albums (name, year, artistId) VALUES ($1, $2, $3) RETURNING *',
+      [name, year, artistId]
+    );
+    res.status(201).json(album);
+  } catch (err) {
+    res.status(500).json(err.message);
+  }
+};
+
 const getAllAlbums = async (_, res) => {
   try {
     const { rows } = await db.query('SELECT * FROM Albums');
@@ -10,8 +27,9 @@ const getAllAlbums = async (_, res) => {
 };
 
 const getAlbumById = async (req, res) => {
+  const { id } = req.params;
+  
   try {
-    const { id } = req.params;
     const {
       rows: [album],
     } = await db.query('SELECT * FROM Albums WHERE id = $1', [id]);
@@ -92,4 +110,4 @@ const deleteAlbum = async (req, res) => {
   }
 };
 
-module.exports = { getAllAlbums, getAlbumById, updateAlbum, deleteAlbum };
+module.exports = { createAlbum, getAllAlbums, getAlbumById, updateAlbum, deleteAlbum };
