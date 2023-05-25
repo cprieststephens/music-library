@@ -22,20 +22,27 @@ describe("Update Album", () => {
     album = albumRow.rows[0];
   });
 
-  describe("PUT /albums/{id}", () => {
-    it("replaces the album and returns the updated record", async () => {
-      const { status, body } = await request(app)
-        .put(`/albums/${album.id}`)
-        .send({ name: "test", year: 2023, artistId: artist.id });
+  describe("PATCH /albums/{id}", () => {
+    it("updates the album and returns the updated record", async () => {
+      const { status, body } = await request(app).patch(`/albums/${album.id}`).send({ name: "something different", year: 2010, artistId: artist.id });
 
       expect(status).to.equal(200);
 
       expect(body).to.deep.equal({
         id: album.id,
-        name: "test",
-        year: 2023,
+        name: "something different",
+        year: 2010,
         artistid: artist.id,
       });
     });
+
+    it("returns a 404 if the artist does not exist", async () => {
+      const { status, body } = await request(app).patch("/albums/999999999").send({ name: "something different", year: 2010, artistId: artist.id });
+
+      expect(status).to.equal(404);
+      expect(body.message).to.equal("album 999999999 does not exist");
+    });
   });
+
+
 });

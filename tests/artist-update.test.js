@@ -1,37 +1,34 @@
-const { expect } = require('chai')
-const request = require('supertest')
-const db = require('../src/db')
-const app = require('../src/app')
+const { expect } = require("chai")
+const request = require("supertest")
+const db = require("../src/db")
+const app = require("../src/app")
 
-describe('Update Artist', () => {
+describe("Update Artist", () => {
   let artist
   beforeEach(async () => {
-    const { rows } = await db.query('INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *', [
-      'Tame Impala',
-      'rock',
-    ])
+    const { rows } = await db.query("INSERT INTO Artists (name, genre) VALUES( $1, $2) RETURNING *", [
+      "Tame Impala",
+      "rock",
+    ]);
 
     artist = rows[0]
-  })
+  });
 
-  describe('PATCH /artists/{id}', () => {
-    it('updates the artist and returns the updated record', async () => {
-      const { status, body } = await request(app).patch(`/artists/${artist.id}`).send({ name: 'something different', genre: 'rock' })
+  describe("PATCH /artists/{id}", () => {
+    it("updates the artist and returns the updated record", async () => {
+      const { status, body } = await request(app).patch(`/artists/${artist.id}`).send({ name: "something different", genre: 'rock' });
 
-      expect(status).to.equal(200)
+      expect(status).to.equal(200);
 
-      expect(body).to.deep.equal({ id: artist.id, name: 'something different', genre: 'rock' })
-    })
+      expect(body).to.deep.equal({ id: artist.id, name: "something different", genre: "rock" });
+    });
 
-    it('returns a 404 if the artist does not exist', async () => {
-      const { status, body } = await request(app).patch('/artists/999999999').send({ name: 'something different', genre: 'rock' })
+    it("returns a 404 if the artist does not exist", async () => {
+      const { status, body } = await request(app).patch("/artists/999999999").send({ name: "something different", genre: "rock" });
 
-      expect(status).to.equal(404)
-      expect(body.message).to.equal('artist 999999999 does not exist')
-    })
-  })
-})
+      expect(status).to.equal(404);
+      expect(body.message).to.equal("artist 999999999 does not exist");
+    });
+  });
+});
 
-// Use an if statement to check if either name or genre is falsy
-// Select the correct postgresql string before passing it into the db.query function
-// NB Don't need to add extra bit to test with 404 code as this has already been done

@@ -5,6 +5,6 @@ const albumRouter = express.Router();
 
 albumRouter.route("/").get(getAllAlbums);
 
-albumRouter.route("/:id").get(getAlbumById).put(updateAlbum).delete(deleteAlbum);
+albumRouter.route("/:id").get(getAlbumById).patch(updateAlbum).delete(deleteAlbum);
 
 module.exports = { albumRouter };
