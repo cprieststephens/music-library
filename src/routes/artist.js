@@ -12,7 +12,7 @@ const artistRouter = express.Router();
 
 artistRouter.route("/").post(createArtist).get(getAllArtists);
 
-artistRouter.route("/:id").get(getArtistById).put(updateArtist).delete(deleteArtist);
+artistRouter.route("/:id").get(getArtistById).patch(updateArtist).delete(deleteArtist);
 
 artistRouter.route("/:artistId/albums").post(createAlbum);
 
