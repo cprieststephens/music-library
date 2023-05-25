@@ -1,12 +1,12 @@
-const { Client } = require("pg");
-const path = require("path");
+const { Client } = require('pg');
+const path = require('path');
 
 const loadEnv = () => {
   const { NODE_ENV } = process.env;
-  if (NODE_ENV != "production") {
-    const envFile = "../.env.test";
+  if (NODE_ENV != 'production') {
+    const envFile = '../.env.test';
 
-    require("dotenv").config({
+    require('dotenv').config({
       path: path.join(__dirname, envFile),
     });
 
@@ -27,7 +27,7 @@ const dropDatabase = async (databaseName) => {
 
     await client.query(`DROP DATABASE ${databaseName} WITH (FORCE)`);
 
-    console.log("Database destroyed!");
+    console.log('Database destroyed!');
   } catch (err) {
     console.log(err);
   } finally {

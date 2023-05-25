@@ -6,8 +6,7 @@ const envName = process.argv.slice(2)[0];
 const loadEnv = (envName) => {
   const { NODE_ENV } = process.env;
   if (NODE_ENV != 'production') {
-
-    const envFile = envName === 'test' ? '../.env.test' : '../.env'
+    const envFile = envName === 'test' ? '../.env.test' : '../.env';
 
     require('dotenv').config({
       path: path.join(__dirname, envFile),
@@ -18,11 +17,10 @@ const loadEnv = (envName) => {
     delete process.env.PGDATABASE;
 
     return databaseName;
-  };
+  }
 };
 
 const createDatabase = async (databaseName) => {
-  
   const client = new Client();
   try {
     await client.connect();
@@ -31,19 +29,18 @@ const createDatabase = async (databaseName) => {
 
     await client.query(`CREATE DATABASE ${databaseName}`);
 
-    console.log("Database created!");
+    console.log('Database created!');
   } catch (err) {
-
     switch (err.code) {
-      case "42P04":
-        console.log("Database already exists!");
-        break
+      case '42P04':
+        console.log('Database already exists!');
+        break;
       default:
         console.log(err);
     }
   } finally {
     client.end();
-  };
+  }
 };
 
 const databaseName = loadEnv(envName);

@@ -1,4 +1,4 @@
-const db = require("../db/index");
+const db = require('../db/index');
 
 const createArtist = async (req, res) => {
   const { name, genre } = req.body;
@@ -6,7 +6,7 @@ const createArtist = async (req, res) => {
     const {
       rows: [artist],
     } = await db.query(
-      "INSERT INTO Artists (name, genre) VALUES ($1, $2) RETURNING *",
+      'INSERT INTO Artists (name, genre) VALUES ($1, $2) RETURNING *',
       [name, genre]
     );
     res.status(201).json(artist);
@@ -17,7 +17,7 @@ const createArtist = async (req, res) => {
 
 const getAllArtists = async (_, res) => {
   try {
-    const { rows } = await db.query("SELECT * FROM Artists");
+    const { rows } = await db.query('SELECT * FROM Artists');
     res.status(200).json(rows);
   } catch (err) {
     res.status(500).json(err.message);
@@ -29,7 +29,7 @@ const getArtistById = async (req, res) => {
     const { id } = req.params;
     const {
       rows: [artist],
-    } = await db.query("SELECT * FROM Artists WHERE id = $1", [id]);
+    } = await db.query('SELECT * FROM Artists WHERE id = $1', [id]);
 
     if (!artist) {
       return res.status(404).json({ message: `artist ${id} does not exist` });
@@ -49,14 +49,15 @@ const updateArtist = async (req, res) => {
   let params;
 
   if (name && genre) {
-    query = "UPDATE Artists SET name = $1, genre = $2 WHERE id = $3 RETURNING *"
-    params = [name, genre, id]
+    query =
+      'UPDATE Artists SET name = $1, genre = $2 WHERE id = $3 RETURNING *';
+    params = [name, genre, id];
   } else if (name) {
-    query = "UPDATE Artists SET name = $1 WHERE id = $2 RETURNING *"
-    params = [name, id]
+    query = 'UPDATE Artists SET name = $1 WHERE id = $2 RETURNING *';
+    params = [name, id];
   } else if (genre) {
-    query = "UPDATE Artists SET genre = $1 WHERE id = $2 RETURNING *"
-    params = [genre, id]
+    query = 'UPDATE Artists SET genre = $1 WHERE id = $2 RETURNING *';
+    params = [genre, id];
   }
 
   try {
@@ -71,7 +72,7 @@ const updateArtist = async (req, res) => {
     res.status(200).json(artist);
   } catch (err) {
     res.status(500).json(err.message);
-  };
+  }
 };
 
 const deleteArtist = async (req, res) => {
@@ -80,7 +81,7 @@ const deleteArtist = async (req, res) => {
   try {
     const {
       rows: [artist],
-    } = await db.query("DELETE FROM Artists WHERE id = $1 RETURNING *", [id]);
+    } = await db.query('DELETE FROM Artists WHERE id = $1 RETURNING *', [id]);
 
     if (!artist) {
       return res.status(404).json({ message: `artist ${id} does not exist` });
@@ -94,11 +95,13 @@ const deleteArtist = async (req, res) => {
 const createAlbum = async (req, res) => {
   const { artistId } = req.params;
   const { name, year } = req.body;
-  
+
   try {
     const {
       rows: [album],
-    } = await db.query("INSERT INTO Albums (name, year, artistId) VALUES ($1, $2, $3) RETURNING *", [name, year, artistId]
+    } = await db.query(
+      'INSERT INTO Albums (name, year, artistId) VALUES ($1, $2, $3) RETURNING *',
+      [name, year, artistId]
     );
     res.status(201).json(album);
   } catch (err) {
@@ -106,4 +109,11 @@ const createAlbum = async (req, res) => {
   }
 };
 
-module.exports = { createArtist, getAllArtists, getArtistById, updateArtist, deleteArtist, createAlbum };
+module.exports = {
+  createArtist,
+  getAllArtists,
+  getArtistById,
+  updateArtist,
+  deleteArtist,
+  createAlbum,
+};

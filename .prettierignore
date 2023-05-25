@@ -1,0 +1,2 @@
+./migrations/01-create-artist-table.sql
+./migrations/02-create-album-table.sql
