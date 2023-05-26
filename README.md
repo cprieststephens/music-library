@@ -22,6 +22,15 @@ This app was created using the NPX script `@command-shift/create-backend-app`.
 
 Use `npm install` to download the project's dependencies.
 
+### Store your environment variables
+
+- Check the `.env.example` file to see what should be included.
+- Create your own `.env` file.
+- Enter your database's credentials.
+- Create a `.env.test` file to create a separate database for testing.
+- Re-enter the credentials but assign a different name to `PGDATABASE`.
+- Check both files are in the `.gitignore` file so they can't be shared.
+
 ## Run the test code
 
 Use `npm test` to run the integration tests.
@@ -60,15 +69,15 @@ Use `npm test` to run the integration tests.
 | /artists     | POST      | Creates an artist         |
 | /artists     | GET       | Returns all artists' data |
 | /artists/:id | GET       | Returns an artist's data  |
-| /artists/:id | PUT       | Replaces an artist's data |
+| /artists/:id | PATCH     | Updates an artist's data  |
 | /artists/:id | DELETE    | Deletes an artist's data  |
 
 ### Albums
 
-| Route                     | HTTP Verb | Description              |
-| ------------------------- | --------- | ------------------------ |
-| /artists/:artistId/albums | POST      | Creates an album         |
-| /albums                   | GET       | Returns all album data   |
-| /albums/:id               | GET       | Returns an album's data  |
-| /albums/:id               | PUT       | Replaces an album's data |
-| /albums/:id               | DELETE    | Deletes an album's data  |
+| Route                     | HTTP Verb | Description             |
+| ------------------------- | --------- | ----------------------- |
+| /artists/:artistId/albums | POST      | Creates an album        |
+| /albums                   | GET       | Returns all album data  |
+| /albums/:id               | GET       | Returns an album's data |
+| /albums/:id               | PATCH     | Updates an album's data |
+| /albums/:id               | DELETE    | Deletes an album's data |
